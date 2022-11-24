@@ -13,7 +13,7 @@ function App() {
     checked: boolean;
   }
 
-  const handlechange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     e.preventDefault();
 
     setInputText(e.target.value);
@@ -25,7 +25,6 @@ function App() {
     if (!inputText) {
       return;
     }
-
 
     const newTodo: Todo = {
       inputValue: inputText,
@@ -68,8 +67,8 @@ function App() {
     <div className="App">
       <div>
         <h2>Todo List</h2>
-        <form onSubmit={(e) => handleSubmit(e)}>
-          <input type="text" onChange={(e) => handlechange(e)} className="inputText" />
+        <form onSubmit={(e) => handleSubmit(e)} className="create-form">
+          <input type="text" onChange={(e) => handleChange(e)} className="inputText" />
           <input type="submit" value="create" className="submitButton" />
         </form>
         <ul className="todoList">
@@ -77,7 +76,7 @@ function App() {
             <li key={todo.id}>
               <input type="text" onChange={(e) => handleEdit(todo.id, e.target.value)} className="inputText" value={todo.inputValue} disabled={todo.checked} />
               <input type="checkbox" onChange={() => handleChecked(todo.id, todo.checked)} />
-              <button onClick={() => handleDelete(todo.id)}>delete</button>
+              <button onClick={() => handleDelete(todo.id)} className="deleteButton">delete</button>
             </li>
           ))}
         </ul>

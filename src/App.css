@@ -11,13 +11,23 @@
   padding: 10px;
 }
 
+.create-form {
+  border-bottom: 3px solid grey;
+  padding-bottom: 10px;
+}
+
 .submitButton {
   padding: 8px 15px;
   cursor: pointer;
+  margin-left: 3px;
+}
+
+.deleteButton {
+  margin-left: 3px;
 }
 
 ul {
-  padding-inline-start: 5px;
+  padding-inline-start: 2px;
 }
 
 .todoList li {
