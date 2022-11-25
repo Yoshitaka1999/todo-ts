@@ -2,6 +2,8 @@ import { type } from 'node:os';
 import React from 'react';
 import { useState } from 'react';
 import './App.css';
+import InputTodo from './components/InputTodo';
+import TodoList from './components/TodoList';
 
 function App() {
   const [inputText, setInputText] = useState("")
@@ -66,20 +68,8 @@ function App() {
   return (
     <div className="App">
       <div>
-        <h2>Todo List</h2>
-        <form onSubmit={(e) => handleSubmit(e)} className="create-form">
-          <input type="text" onChange={(e) => handleChange(e)} className="inputText" />
-          <input type="submit" value="create" className="submitButton" />
-        </form>
-        <ul className="todoList">
-          {todos.map(todo => (
-            <li key={todo.id}>
-              <input type="text" onChange={(e) => handleEdit(todo.id, e.target.value)} className="inputText" value={todo.inputValue} disabled={todo.checked} />
-              <input type="checkbox" onChange={() => handleChecked(todo.id, todo.checked)} />
-              <button onClick={() => handleDelete(todo.id)} className="deleteButton">delete</button>
-            </li>
-          ))}
-        </ul>
+        <InputTodo handleChange={handleChange} handleSubmit={handleSubmit}/>
+        <TodoList handleEdit={handleEdit} handleChecked={handleChecked} handleDelete={handleDelete} todos={todos}/>
       </div>
     </div>
   );
